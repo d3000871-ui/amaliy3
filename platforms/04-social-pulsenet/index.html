@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PulseNet | Modern Social Community & Tech Feed</title>
+  <meta name="description" content="PulseNet - Dasturchilar va startaplar uchun zamonaviy ijtimoiy tarmoq. Fikr almashing, postlar yozing va hamjamiyat bilan bog'laning.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="pulse-header">
+    <div class="header-inner">
+      <div class="header-left">
+        <a href="../../index.html" class="hub-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          <span>Hub</span>
+        </a>
+        <div class="brand">
+          <div class="brand-glow">⚡</div>
+          <span class="brand-name">Pulse<span>Net</span></span>
+        </div>
+      </div>
+      <div class="header-center">
+        <input type="text" id="postFilter" placeholder="Mavzular yoki postlarni qidirish...">
+      </div>
+      <div class="header-right">
+        <div class="user-profile-mini">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop&crop=faces" alt="Avatar" class="avatar">
+          <span>Siz (Onlayn)</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <div class="pulse-container">
+    <!-- Left Sidebar: Navigation & Profile Card -->
+    <aside class="sidebar-left">
+      <div class="profile-card">
+        <div class="profile-banner"></div>
+        <div class="profile-details">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&h=120&fit=crop&crop=faces" class="profile-avatar">
+          <h4>Sardor Aliyev</h4>
+          <p class="handle">@sardor_dev</p>
+          <p class="bio">AI Engineer & Full-Stack Creator. Antigravity Ecosystem Enthusiast 🚀</p>
+          <div class="stats-row">
+            <div><strong>1,420</strong><span>Obunachilar</span></div>
+            <div><strong>385</strong><span>Obunalar</span></div>
+            <div><strong>92</strong><span>Postlar</span></div>
+          </div>
+        </div>
+      </div>
+
+      <nav class="side-menu">
+        <a href="#" class="menu-item active">🔥 Asosiy Tasma</a>
+        <a href="#" class="menu-item">🌟 Sevimlilar</a>
+        <a href="#" class="menu-item">💬 Xabarlar (3)</a>
+        <a href="#" class="menu-item">⚙️ Sozlamalar</a>
+      </nav>
+    </aside>
+
+    <!-- Center: Feed & Stories -->
+    <main class="feed-column">
+      <!-- Stories Bar -->
+      <div class="stories-bar" id="storiesBar">
+        <!-- Rendered via JS -->
+      </div>
+
+      <!-- Post Composer -->
+      <div class="post-composer">
+        <div class="composer-top">
+          <div class="composer-avatar">SA</div>
+          <textarea id="composerInput" placeholder="Bugun qanday yangi loyiha yoki kashfiyot ustida ishlayapsiz?"></textarea>
+        </div>
+        <div class="composer-bottom">
+          <div class="composer-tools">
+            <button class="tool-btn" id="addCodeBtn">💻 Kod</button>
+            <button class="tool-btn" id="addTagBtn">🏷️ #Teg</button>
+            <button class="tool-btn" id="addEmojiBtn">🚀 Idea</button>
+          </div>
+          <button class="publish-btn" id="publishBtn">Ulashish</button>
+        </div>
+      </div>
+
+      <!-- Feed Posts -->
+      <div class="feed-posts" id="feedPosts">
+        <!-- Injected via JS -->
+      </div>
+    </main>
+
+    <!-- Right Sidebar: Trends & Follow suggestions -->
+    <aside class="sidebar-right">
+      <div class="card-box">
+        <h4>Trend Mavzular 📈</h4>
+        <div class="trend-list">
+          <div class="trend-item">
+            <span>#Antigravity2026</span>
+            <small>18.4K post</small>
+          </div>
+          <div class="trend-item">
+            <span>#ArtificialIntelligence</span>
+            <small>42.1K post</small>
+          </div>
+          <div class="trend-item">
+            <span>#TashkentTechHub</span>
+            <small>9.8K post</small>
+          </div>
+          <div class="trend-item">
+            <span>#OpenSourceWeb</span>
+            <small>14.2K post</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-box">
+        <h4>Tavsiya etilganlar</h4>
+        <div class="follow-list" id="followList">
+          <!-- Injected via JS -->
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FinPulse | Next-Gen Crypto & Asset Terminal</title>
+  <meta name="description" content="FinPulse - Professional kriptovalyuta va moliyaviy aktivlar monitoringi, jonli grafiklar va virtual savdo platformasi.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="fin-header">
+    <div class="header-inner">
+      <div class="left-box">
+        <a href="../../index.html" class="hub-pill">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          <span>Hub</span>
+        </a>
+        <div class="brand">
+          <div class="brand-gem">💎</div>
+          <span class="brand-name">Fin<span>Pulse</span></span>
+          <span class="live-dot">● LIVE</span>
+        </div>
+      </div>
+
+      <div class="center-tickers" id="tickerTape">
+        <!-- Live Tickers injected by JS -->
+      </div>
+
+      <div class="right-box">
+        <div class="wallet-badge">
+          <span>Hamyon balansi:</span>
+          <strong id="userBalance">$24,500.00</strong>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Terminal Layout -->
+  <div class="terminal-layout">
+    <!-- Center Main: Chart & Market Info -->
+    <main class="chart-panel">
+      <div class="market-hero-bar">
+        <div class="asset-selected">
+          <div class="asset-icon" id="activeAssetIcon">₿</div>
+          <div>
+            <div class="asset-pair">
+              <h2 id="activeAssetName">Bitcoin</h2>
+              <span class="pair-code" id="activeAssetCode">BTC/USDT</span>
+            </div>
+            <div class="asset-price-wrap">
+              <span class="main-price" id="activePrice">$94,250.00</span>
+              <span class="price-change positive" id="activeChange">+4.82%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeframe-buttons">
+          <button class="tf-btn" data-tf="1H">1H</button>
+          <button class="tf-btn active" data-tf="24H">24H</button>
+          <button class="tf-btn" data-tf="7D">7D</button>
+          <button class="tf-btn" data-tf="1Y">1Y</button>
+        </div>
+      </div>
+
+      <!-- Canvas Chart Container -->
+      <div class="canvas-box">
+        <canvas id="priceChart" width="850" height="360"></canvas>
+      </div>
+
+      <!-- Market Assets Table -->
+      <div class="assets-table-wrap">
+        <h3>Top Bozor Aktivlari</h3>
+        <table class="assets-table">
+          <thead>
+            <tr>
+              <th>Aktiv</th>
+              <th>Narx</th>
+              <th>24h O'zgarish</th>
+              <th>24h Aylanma</th>
+              <th>Savdo</th>
+            </tr>
+          </thead>
+          <tbody id="assetsTableBody">
+            <!-- Injected by JS -->
+          </tbody>
+        </table>
+      </div>
+    </main>
+
+    <!-- Right: Quick Swap & Order Book -->
+    <aside class="trade-panel">
+      <div class="trade-card">
+        <h3>Tezkor Savdo (Instant Swap)</h3>
+        <div class="swap-box">
+          <div class="swap-input-group">
+            <div class="swap-label">
+              <span>Siz berasiz</span>
+              <small>Mavjud: <strong id="swapFromBal">$24,500</strong></small>
+            </div>
+            <div class="swap-field">
+              <input type="number" id="swapFromAmount" value="1000" min="1">
+              <span class="currency-tag">USDT</span>
+            </div>
+          </div>
+
+          <div class="swap-arrow-divider">⇅</div>
+
+          <div class="swap-input-group">
+            <div class="swap-label">
+              <span>Siz olasiz (taxminan)</span>
+              <small>Kurs: 1 BTC ≈ $94,250</small>
+            </div>
+            <div class="swap-field">
+              <input type="text" id="swapToAmount" readonly value="0.0106">
+              <select id="swapTargetAsset" class="swap-select">
+                <option value="BTC">BTC</option>
+                <option value="ETH">ETH</option>
+                <option value="SOL">SOL</option>
+                <option value="TON">TON</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="swap-details">
+            <div class="detail-row">
+              <span>Tarmoq to'lovi:</span>
+              <span>0.00 USDT (Zero-Fee)</span>
+            </div>
+            <div class="detail-row">
+              <span>Sirg'alish (Slippage):</span>
+              <span>0.1%</span>
+            </div>
+          </div>
+
+          <button class="execute-swap-btn" id="executeSwapBtn">Hozir Ayirboshlash</button>
+        </div>
+      </div>
+
+      <!-- Portfolio Breakdown Card -->
+      <div class="portfolio-card">
+        <h3>Portfolio Taqsimoti</h3>
+        <div class="progress-segments">
+          <div class="seg seg-btc" style="width: 55%;" title="BTC: 55%"></div>
+          <div class="seg seg-eth" style="width: 25%;" title="ETH: 25%"></div>
+          <div class="seg seg-sol" style="width: 12%;" title="SOL: 12%"></div>
+          <div class="seg seg-ton" style="width: 8%;" title="TON: 8%"></div>
+        </div>
+        <div class="seg-legend">
+          <div><span class="dot btc"></span> BTC 55%</div>
+          <div><span class="dot eth"></span> ETH 25%</div>
+          <div><span class="dot sol"></span> SOL 12%</div>
+          <div><span class="dot ton"></span> TON 8%</div>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

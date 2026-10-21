@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CarePulse | Telehealth & Shifokor Qabuliga Yozilish Platformasi</title>
+  <meta name="description" content="CarePulse - Malakali shifokorlar bilan onlayn konsultatsiya, qabulga yozilish va sun'iy intellekt simptom tekshiruvi.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="care-header">
+    <div class="care-nav">
+      <div class="nav-left">
+        <a href="../../index.html" class="hub-pill">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          <span>Hub</span>
+        </a>
+        <div class="care-brand">
+          <div class="cross-icon">🩺</div>
+          <span class="brand-name">Care<span>Pulse</span></span>
+        </div>
+      </div>
+
+      <div class="nav-right">
+        <div class="hotline-badge">
+          <span>Tez Yordam:</span>
+          <strong>103 / +998 71 200 00 03</strong>
+        </div>
+        <button class="symptom-checker-btn" id="openSymptomCheckerBtn">
+          🤖 AI Simptom Tahlilchisi
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="care-hero">
+    <div class="hero-inner">
+      <span class="hero-tag">Onlayn Telemeditsina 2026</span>
+      <h1>Sog'lig'ingiz Ishonchli Qo'llarda</h1>
+      <p>Eng tajribali oliy toifali mutaxassislar qabuliga navbatsiz onlayn yoziling yoki 15 daqiqada video-konsultatsiya oling.</p>
+      
+      <!-- Search & Specialty Filter -->
+      <div class="search-specialty-box">
+        <div class="input-field">
+          <span>🔍</span>
+          <input type="text" id="doctorSearch" placeholder="Shifokor ismi yoki kasallik nomi bo'yicha qidirish...">
+        </div>
+        <div class="select-field">
+          <select id="specialtyFilter">
+            <option value="all">Barcha Mutaxassisliklar</option>
+            <option value="cardio">Kardiolog (Yurak)</option>
+            <option value="neuro">Nevrolog (Asab)</option>
+            <option value="derma">Dermatolog (Teri)</option>
+            <option value="pediatry">Pediatr (Bolalar)</option>
+            <option value="therapist">Umumiy Terapevt</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Doctors Directory -->
+  <main class="doctors-container">
+    <div class="section-title-row">
+      <h2>Oliy Toifali Shifokorlar</h2>
+      <span id="docCount">Topildi: 6 ta mutaxassis</span>
+    </div>
+
+    <div class="doctors-grid" id="doctorsGrid">
+      <!-- Injected by JS -->
+    </div>
+  </main>
+
+  <!-- Booking Modal -->
+  <div class="modal-overlay" id="bookingModal">
+    <div class="modal-card">
+      <div class="modal-head">
+        <div>
+          <h3 id="bookDocName">Dr. Jamshid Ergashev</h3>
+          <span id="bookDocSpec" class="spec-label">Kardiolog</span>
+        </div>
+        <button class="close-x" id="closeBookingModal">&times;</button>
+      </div>
+
+      <form id="bookingForm" class="booking-form">
+        <div class="form-group">
+          <label>Qabul Sanasi:</label>
+          <input type="date" id="bookDate" required>
+        </div>
+
+        <div class="form-group">
+          <label>Mavjud Qabul Vaqtlari:</label>
+          <div class="time-slots" id="timeSlots">
+            <button type="button" class="slot-btn active" data-time="09:30">09:30</button>
+            <button type="button" class="slot-btn" data-time="11:00">11:00</button>
+            <button type="button" class="slot-btn" data-time="14:15">14:15</button>
+            <button type="button" class="slot-btn" data-time="16:00">16:00</button>
+            <button type="button" class="slot-btn" data-time="17:30">17:30</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Bemor F.I.Sh:</label>
+          <input type="text" id="patientName" required placeholder="Aziz Karimov">
+        </div>
+
+        <div class="form-group">
+          <label>Telefon raqami:</label>
+          <input type="tel" id="patientPhone" required placeholder="+998 90 123 45 67">
+        </div>
+
+        <div class="booking-fee-row">
+          <span>Qabul to'lovi:</span>
+          <strong id="bookPrice">150,000 so'm</strong>
+        </div>
+
+        <button type="submit" class="confirm-book-btn">Qabulga Yozilishni Tasdiqlash</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- AI Symptom Triage Modal -->
+  <div class="modal-overlay" id="symptomModal">
+    <div class="modal-card triage-card">
+      <div class="modal-head">
+        <h3>🤖 CarePulse AI Simptom Tekshiruvi</h3>
+        <button class="close-x" id="closeSymptomModal">&times;</button>
+      </div>
+      <p class="triage-intro">O'zingizda sezayotgan belgilarni belgilang, AI assistent dastlabki yo'nalish va tavsiyalarni beradi:</p>
+      
+      <div class="symptom-checkboxes">
+        <label class="symptom-pill"><input type="checkbox" value="headache"> 🤕 Kuchli bosh og'rig'i</label>
+        <label class="symptom-pill"><input type="checkbox" value="fever"> 🌡️ Yuqori tana harorati (38°+)</label>
+        <label class="symptom-pill"><input type="checkbox" value="cough"> 🫁 Quruq yo'tal / nafas qisishi</label>
+        <label class="symptom-pill"><input type="checkbox" value="pressure"> 💓 Yurak tez urishi / qon bosimi</label>
+        <label class="symptom-pill"><input type="checkbox" value="fatigue"> 😴 Holsizlik va bosh aylanishi</label>
+      </div>
+
+      <button id="analyzeSymptomsBtn" class="analyze-btn">Belgilarni Tahlil Qilish</button>
+
+      <div id="triageResult" class="triage-result-box" style="display:none;"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
